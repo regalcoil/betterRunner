@@ -60,7 +60,7 @@ def conversion(x, z):
 			x = "0" + x
 		print(runs[z] + "--->" + "00:00:" + x)
 
-def mph(x, y):
+def speedmi(x, y):
 	indexOf = runs.index("1mi   ")
 	multiplier = inm[indexOf] / inm[y-1]
 	mitime = x * multiplier
@@ -68,7 +68,7 @@ def mph(x, y):
 	mph = 3600/mitime
 	print(str(mph) + " mph")
 
-def kmph(x, y):
+def speedkm(x, y):
 	indexOf = runs.index("1km   ")
 	multiplier = inm[indexOf] / inm[y-1]
 	mitime = x * multiplier
@@ -101,8 +101,18 @@ def improver(x, y):
 	print("Metric breakdown of improved times: ")
 	print(b)
 	equivalence(nTime, y)
-	mph(nTime, y)
-	kmph(nTime, y)
+	print(b)
+	speedmi(nTime, y)
+	speedkm(nTime, y)
+
+def repeater():
+	print(b)
+	choice = input("Enter 'yes' to analyze metrics for a different race, anything else will exit the application: ")
+	choice = choice.lower()
+	if choice == "yes":
+		runner()
+	else:
+		exit()
 
 def runner():
 	count = 1
@@ -122,9 +132,10 @@ def runner():
 	print(b)
 	equivalence(time, choice)
 	print(b)
-	mph(time, choice)
-	kmph(time, choice)
+	speedmi(time, choice)
+	speedkm(time, choice)
 	improver(time, choice)
+	repeater()
 
 
 runner()
